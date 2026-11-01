@@ -1,0 +1,17 @@
+body { font-family: Arial, sans-serif; background: #f2f4f8; margin: 0; color: #222; }
+main { max-width: 650px; margin: 40px auto; background: white; padding: 25px; border-radius: 10px; }
+h1 { margin-top: 0; }
+input, textarea { display: block; box-sizing: border-box; width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; font: inherit; }
+textarea { min-height: 80px; }
+button { background: #2866c7; color: white; border: 0; padding: 9px 13px; border-radius: 5px; cursor: pointer; margin: 3px 3px 3px 0; }
+button:hover { opacity: .85; }
+button:disabled { opacity: .5; cursor: wait; }
+.task-item { border: 1px solid #ddd; border-radius: 7px; padding: 15px; margin: 12px 0; }
+.task-title { margin: 0 0 8px; }
+.task-description { white-space: pre-wrap; }
+.task-status { font-weight: bold; }
+.delete-task { background: #c63737; }
+.toggle-task { background: #26804d; }
+#status-message { min-height: 20px; }
+a { color: #2866c7; }
+@media (max-width: 700px) { main { margin: 12px; padding: 18px; } }
