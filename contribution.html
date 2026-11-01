@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Contribution</title>
+  <style>
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: #f4f5f7; color: #1f2328; margin: 0; }
+    main { max-width: 720px; margin: 0 auto; padding: 24px 16px; }
+    button { font: inherit; padding: 6px 14px; border-radius: 6px; border: 1px solid #1f6feb; background: #1f6feb; color: #fff; cursor: pointer; }
+    #contributor-student-id { margin: 16px 0; font-weight: 600; min-height: 1.5em; }
+    .error { color: #cf222e; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Team Contribution</h1>
+    <button type="button" id="load-contributor">Show Contributor</button>
+    <p id="contributor-student-id"></p>
+    <a href="index.html">Back to Task Manager</a>
+  </main>
+
+  <script>
+    const output = document.getElementById('contributor-student-id');
+
+    document.getElementById('load-contributor').addEventListener('click', async () => {
+      output.classList.remove('error');
+      output.textContent = 'Loading...';
+      try {
+        const response = await fetch('contribution.json', { cache: 'no-store' });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const data = await response.json();
+        if (!data.contributorStudentId) throw new Error('contributorStudentId is missing');
+        output.textContent = `Contributor Student ID: ${data.contributorStudentId}`;
+      } catch (err) {
+        output.classList.add('error');
+        output.textContent = `Could not load contributor: ${err.message}`;
+      }
+    });
+  </script>
+</body>
+</html>
